@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-12-19T13:00:36 IST" name="Default suite" finished-at="2020-12-19T13:02:41 IST" duration-ms="124484">
+    <groups>
+    </groups>
+    <test started-at="2020-12-19T13:00:36 IST" name="Default test" finished-at="2020-12-19T13:02:41 IST" duration-ms="124484">
+      <class name="seleniumTest.Testng1">
+        <test-method is-config="true" signature="openWebsite()[pri:0, instance:seleniumTest.Testng1@56a6d5a6]" started-at="2020-12-19T13:00:36 IST" name="openWebsite" finished-at="2020-12-19T13:01:07 IST" duration-ms="30302" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openWebsite -->
+        <test-method signature="testmethod1()[pri:0, instance:seleniumTest.Testng1@56a6d5a6]" started-at="2020-12-19T13:01:07 IST" name="testmethod1" finished-at="2020-12-19T13:01:38 IST" duration-ms="31309" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testmethod1 -->
+        <test-method signature="testmethod2()[pri:1, instance:seleniumTest.Testng1@56a6d5a6]" started-at="2020-12-19T13:01:38 IST" name="testmethod2" finished-at="2020-12-19T13:02:02 IST" duration-ms="23977" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testmethod2 -->
+        <test-method signature="testmethod3()[pri:2, instance:seleniumTest.Testng1@56a6d5a6]" started-at="2020-12-19T13:02:02 IST" name="testmethod3" finished-at="2020-12-19T13:02:26 IST" duration-ms="24358" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testmethod3 -->
+        <test-method signature="testMethod4()[pri:3, instance:seleniumTest.Testng1@56a6d5a6]" started-at="2020-12-19T13:02:26 IST" name="testMethod4" finished-at="2020-12-19T13:02:40 IST" duration-ms="13730" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMethod4 -->
+        <test-method is-config="true" signature="aftertestmethod()[pri:0, instance:seleniumTest.Testng1@56a6d5a6]" started-at="2020-12-19T13:02:40 IST" name="aftertestmethod" finished-at="2020-12-19T13:02:41 IST" duration-ms="767" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aftertestmethod -->
+      </class> <!-- seleniumTest.Testng1 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
