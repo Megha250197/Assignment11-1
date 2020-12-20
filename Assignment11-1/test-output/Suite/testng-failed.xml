@@ -3,14 +3,18 @@
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="seleniumTest.Testng1">
+      <class name="com.cleartrip.test.BookingPageTest">
         <methods>
-          <include name="aftertestmethod"/>
-          <include name="testmethod3"/>
-          <include name="openWebsite"/>
-          <include name="testMethod4"/>
+          <include name="verifyBookingTest"/>
+          <include name="startBrowser"/>
         </methods>
-      </class> <!-- seleniumTest.Testng1 -->
+      </class> <!-- com.cleartrip.test.BookingPageTest -->
+      <class name="com.cleartrip.test.ItineraryPageTest">
+        <methods>
+          <include name="verifyItineraryWindow"/>
+          <include name="startBrowser"/>
+        </methods>
+      </class> <!-- com.cleartrip.test.ItineraryPageTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="seleniumTest.Testng1">
+      <class name="com.cleartrip.test.Testng1">
         <methods>
+          <include name="homePageTest"/>
+          <include name="startBrowser"/>
           <include name="aftertestmethod"/>
-          <include name="testmethod3"/>
-          <include name="openWebsite"/>
-          <include name="testMethod4"/>
         </methods>
-      </class> <!-- seleniumTest.Testng1 -->
+      </class> <!-- com.cleartrip.test.Testng1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

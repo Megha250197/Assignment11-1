@@ -1,4 +1,5 @@
-package seleniumTest;
+package com.cleartrip.test;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -6,63 +7,33 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import com.cleartrip.library.Basics;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
-
-
-public class Testng1 
+public class Testng1 extends Basics
 {
-	
-	WebDriver driver;
-	ExtentReports extent;
-	ExtentSparkReporter spark;
-	@BeforeTest
-	public void openWebsite()
-	{
-	WebDriverManager.chromedriver().setup(); //Without using system.setproperty command,
-											//we can invoke any browser with WebDriver manager
-	
-	ChromeOptions options = new ChromeOptions();
-	options.addArguments("--disable-notifications");// to disable notification pop up
-	driver = new ChromeDriver();
-	driver= new ChromeDriver(options);
-	driver.manage().window().maximize();//to maximize window
-	driver.get("https://www.cleartrip.com");
-	driver.manage().deleteAllCookies();
-	String atitle = driver.getTitle();
-	System.out.println(atitle);
-	Assert.assertEquals(atitle, "#1 Site for Booking Flights, Hotels, Packages, Trains & Local activities.");
-	System.out.println("Before test is completed");
-	  // to generate report
-	extent=new ExtentReports();
-	spark=new ExtentSparkReporter("/target/Spark.html");
-	extent.attachReporter(spark);
-	
-	}
-	
-	
+
 	@Test(priority=0)
-    public void testmethod1() throws InterruptedException
+    public void homePageTest() throws InterruptedException
     {
-    	extent.createTest("Search Flights");
+    	extent.createTest("Search Flights Functionality");
     	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	Thread.sleep(3000);
+    	driver.get("https://www.cleartrip.com");
+    	driver.manage().deleteAllCookies();
+    	String atitle = driver.getTitle();
+    	System.out.println(atitle);
+    	Assert.assertEquals(atitle, "#1 Site for Booking Flights, Hotels, Packages, Trains & Local activities.");
+    	System.out.println("Before test is completed");
     	
          WebElement flights = driver.findElement(By.xpath("//a[text()='Flights']"));
-        Assert.assertTrue(flights.isDisplayed());
         flights.click();
+        WebElement vpage = driver.findElement(By.xpath("//h1[text()='Search flights']"));
+        Assert.assertEquals(vpage.getText(), "Search flights");
         WebElement oneway = driver.findElement(By.xpath("//label[@title='One way']"));//radio button
         oneway.click();
         Thread.sleep(2000);
@@ -105,17 +76,18 @@ public class Testng1
         driver.findElement(By.id("SearchBtn")).click();
         Thread.sleep(2000);
         String actualtitle = driver.getTitle();
+        Thread.sleep(3000);
         System.out.println(actualtitle);
         Assert.assertEquals(actualtitle , "Flight bookings, Cheap flights, Lowest Air tickets @Cleartrip");
         Thread.sleep(5000);
         
-        System.out.println("test method 1 is executed");
+        System.out.println("Search flight functionality is verified");
         extent.flush();
     }
     @Test(priority=1)
-    public void testmethod2() throws InterruptedException
+    public void verifyBookingFlight() throws InterruptedException
     {
-    	extent.createTest("Book flight");
+    	extent.createTest("Verifying Booking Flight");
     	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     	Thread.sleep(4000);
     	driver.findElement(By.xpath("//p[text()='Non-stop']")).click();
@@ -144,14 +116,14 @@ public class Testng1
        	  WebElement listOfFlights = driver.findElement(By.xpath("//button[text()='Book']"));
        	  listOfFlights.click();
    	        Thread.sleep(3000);
-   	        System.out.println("Test method 2 is executed");
+   	        System.out.println("Specific Flight is booked");
    	        extent.flush();
     }
    	        
   @Test(priority=2)
-  public void testmethod3() throws InterruptedException
+  public void verifyItinenarywindow() throws InterruptedException
   {
-	  extent.createTest("open Iternary window");
+	  extent.createTest("open and verify Itinernary window");
 	 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	  driver.manage().deleteAllCookies();
 	  Set<String> pwh = driver.getWindowHandles();
@@ -176,14 +148,14 @@ public class Testng1
    	      driver.findElement(By.xpath("//input[@name='username']")).sendKeys("megha@gmail.com");
            driver.findElement(By.xpath("//input[@id='LoginContinueBtn_1']")).click();
            Thread.sleep(2000);
-           System.out.println("Test method 3 is executed");
+           System.out.println("Itinenary window is verified");
            extent.flush();
     	
     }
     
 
   @Test(priority=3)
-  		public void testMethod4() throws InterruptedException 
+  		public void verifyPassengerDetails() throws InterruptedException 
   		{
 	  extent.createTest("Adding traveler details");
 	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -252,15 +224,9 @@ public class Testng1
 	    driver.findElement(By.id("travellerBtn")).click();
 	    Thread.sleep(2000);
 	    
-	    System.out.println("Test method 4 is executed");
+	    System.out.println("Traveller details is added ");
 	    extent.flush();
   		}
   
-  	@AfterTest()
-  		public void aftertestmethod()
-  		{
-  		
-  			driver.quit();
-  			
-  		}
+  
 }
